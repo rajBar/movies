@@ -1,4 +1,8 @@
 ---
 layout: home
-title: BLAH BLAH
+title: Nat is Chinese
 ---
+
+### Hello there
+
+### General Kenobi
