@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 
-    {% include head.html %}
+<head>
+    <title>{{ site.title }}</title>
+</head>
 
 <body>
 
     <main>
 
-        <h1>{{ site.title }}</h1>
+        <h1>{{ page.title }}</h1>
         <h4>something else</h4>
+
+        <div>
+            {{ content }}
+        </div>
 
     </main>
 

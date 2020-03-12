@@ -1,4 +1,4 @@
 ---
 layout: home
-title: BLAH BLAH BLAH
+title: BLAH BLAH
 ---
