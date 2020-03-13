@@ -1,13 +1,13 @@
-.home-layout {
+.movie-layout {
     max-width: 920px;
     margin: auto;
 }
 
-.home-layout > h1 {
+.movie-layout > h1 {
     text-align: center;
 }
 
-.home-layout > table {
+.movie-layout > table {
     margin-left: auto;
     margin-right: auto;
     cell-padding: 10px;

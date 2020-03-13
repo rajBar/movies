@@ -1,8 +1,7 @@
 ---
 layout: null
 files:
- - layouts/home.css
- - includes/head.css
+ - layouts/movie.css
 ---
 {% for file in page.files %}
 

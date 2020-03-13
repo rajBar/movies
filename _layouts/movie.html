@@ -5,24 +5,15 @@
 
 <body>
 
-    <main class="home-layout">
+    <main class="movie-layout">
 
         <h1>{{ page.title }}</h1>
-
-<!--        <ul>-->
-<!--            {% for item in site.data.movie-ratings %}-->
-<!--            <li>-->
-<!--                {{ item.name }} & {{ item.rating }}-->
-<!--            </li>-->
-<!--            {% endfor %}-->
-<!--        </ul>-->
 
         {% assign mydata=site.data.movie-ratings %}
 
         <p>Total movies: {{ mydata.size }}</p>
 
         <table>
-<!--            <caption>Movie List</caption>-->
             <thead>
             {% for column in mydata[0] %}
             <th>{{ column[0] }}</th>
