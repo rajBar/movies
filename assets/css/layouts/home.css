@@ -23,3 +23,5 @@ th {background-color: #009926}
 tr:nth-child(even){background-color: #f2f2f2;}
 
 tr:hover {background-color: #ddd;}
+
+p {text-align: center;}
