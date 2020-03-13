@@ -1,0 +1,11 @@
+---
+layout: null
+files:
+ - layouts/home.css
+ - includes/head.css
+---
+{% for file in page.files %}
+
+{% include_relative {{ file }} %}
+
+{% endfor %}
