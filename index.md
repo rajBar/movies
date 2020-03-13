@@ -1,8 +1,4 @@
 ---
 layout: home
-title: Nat is Chinese
+title: Movie List
 ---
-
-### Hello there
-
-### General Kenobi
