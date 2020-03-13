@@ -1,0 +1,25 @@
+.home-layout {
+  max-width: 920px;
+  margin: auto;
+}
+
+.home-layout > h1 {
+  text-align: center;
+}
+
+.home-layout > table {
+  margin-left: auto;
+  margin-right: auto;
+  cell-padding: 10px;
+  text-align: center;
+}
+
+table, td, th {
+  padding: 5px 10px 5px 10px;
+}
+
+th {background-color: #009926}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
