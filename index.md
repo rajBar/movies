@@ -1,6 +1,4 @@
 ---
 layout: home
-title: Movie List
+title: Raj's Movie List
 ---
-
-blah blah
