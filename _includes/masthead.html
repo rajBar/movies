@@ -1,0 +1,17 @@
+<header class="masthead">
+    <div class="masthead-top">
+        <h1 class="masthead-title">
+            {{ page.title }}
+        </h1>
+    </div>
+    <div class="masthead-nav">
+        <ul>
+            {% for item in site.data.navigation %}<li>
+                <a href="{{ item.url | relative_url }}"
+                    {% if page.nav == item.name %} class="is-selected" {% endif %}>
+                    {{ item.name }}
+                </a>
+            </li>{% endfor %}
+        </ul>
+    </div>
+</header>

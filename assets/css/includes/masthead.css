@@ -1,0 +1,53 @@
+.masthead {
+    max-width: 920px;
+    margin: auto;
+    text-align: center;
+}
+
+.masthead-top {
+    box-sizing: border-box;
+    padding-top: 16px;
+    height: 60px;
+    max-width: 1280px;
+}
+
+.masthead-title {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 24px;
+    margin-top: 6px;
+    vertical-align: top;
+}
+
+.masthead ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 24px;
+}
+
+.masthead li {
+    display: inline-block;
+    padding: 0 8px;
+}
+
+.masthead li > a {
+    display: block;
+    text-decoration: none;
+    padding: 8px 4px;
+    color: rgb(28, 28, 28);
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
+}
+
+.masthead li > a:hover {
+    border-bottom: 3px solid rgb(204, 204, 204);
+}
+
+.masthead li > a.is-selected {
+    border-bottom: 3px solid rgb(100, 100, 100);
+}
+
+.masthead-nav {
+    display: block;
+    border-bottom: rgb(238, 238, 238);
+}

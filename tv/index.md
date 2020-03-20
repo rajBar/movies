@@ -1,5 +1,6 @@
 ---
 layout: movie
-title: Raj's Movie List
+title: Raj's TV Show List
 dataset: tv shows
+nav: TV list
 ---

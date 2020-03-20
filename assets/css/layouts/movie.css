@@ -1,29 +1,42 @@
+body {
+    /*background-color: #1abc9c;*/
+}
+
 .movie-layout {
     max-width: 920px;
     margin: auto;
 }
 
-.movie-layout > h1 {
+.movie-layout h1 {
+    font-family: Verdana;
     text-align: center;
 }
 
-.movie-layout > table {
+.movie-layout table {
     margin-left: auto;
     margin-right: auto;
     cell-padding: 10px;
     text-align: center;
 }
 
-table, td, th {
+.movie-layout td, th {
     padding: 5px 10px 5px 10px;
 }
 
-th {background-color: #009926}
+.movie-layout th {background-color: #009926}
 
-tr:nth-child(even){background-color: #f2f2f2;}
+.movie-layout tr:nth-child(even){background-color: #f2f2f2;}
 
-tr:hover {background-color: #ddd;}
+.movie-layout tr:nth-child(odd){background-color: white;}
 
-p {text-align: center;}
+.movie-layout tr:hover {background-color: #ddd;}
 
-a {color: blue;}
+.movie-layout p {
+    padding-top: 16px;
+    text-align: center;
+    /*color: white;*/
+}
+
+a {
+    color: blue;
+}
