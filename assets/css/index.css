@@ -3,6 +3,7 @@ layout: null
 files:
  - layouts/movie.css
  - includes/masthead.css
+ - site.css
 ---
 {% for file in page.files %}
 
