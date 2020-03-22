@@ -35,12 +35,14 @@
 
 .item span:first-child {
     font-weight: 500;
-    font-size: 1.2rem;
+    /*font-size: 1.2rem;*/
+    font-size: 17px;
 }
 
 .item span:nth-child(2n) {
     display: block;
-    font-size: 1.2rem;
+    /*font-size: 1.2rem;*/
+    font-size: 17px;
 }
 
 .rating-10 {
