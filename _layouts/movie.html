@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 {% include head.html %}
-{% include masthead.html %}
-
 <body>
-
-    <main class="movie-layout">
-
-<!--        <h1>{{ page.title }}</h1>-->
-
+    {% include masthead.html %}
+    <section class="main">
         {% assign mydata = site.data.movie-ratings %}
         {% if page.dataset == "movies" %}
         {% assign mydata = (site.data.movie-ratings | sort:'Rating') | reverse %}
@@ -17,29 +11,34 @@
         {% assign mydata = (site.data.tv-ratings | sort:'Rating') | reverse %}
         {% endif %}
 
-        <p>Total {{ page.dataset }}: {{ mydata.size }}</p>
+        <p class="total">Total {{ page.dataset }}: {{ mydata.size }}</p>
 
-        <table>
-            <thead>
-            {% for column in mydata[0] %}
-            <th>{{ column[0] }}</th>
-            {% endfor %}
-            </thead>
-            <tbody>
+        <p class="filter-wrap"><input type="text" id="filter" onkeyup="filter()" placeholder="Search..." /></p>
+
+        <div class="list">
             {% for row in mydata %}
-            <tr>
-                {% for cell in row %}
-                <td>{{ cell[1] }}</td>
-                {% endfor %}
-            </tr>
+            <div class="item rating-{{ row.Rating | strip }}">
+                <span class="name">{{ row.Name }}</span>
+                <span class="rating">{{ row.Rating }}</span>
+            </div>
             {% endfor %}
-            </tbody>
-        </table>
+        </div>
+    </section>
 
-        {{ content }}
+    <script>
+        function filter() {
+            const filterValue = document.getElementById('filter').value.toUpperCase();
+            const items = document.getElementsByClassName('item');
 
-    </main>
-
+            for (i = 0; i < items.length; i++) {
+                const item = items[i].children[0].textContent || items[i].children[0].innerText;
+                if (item.toUpperCase().indexOf(filterValue) > -1) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
-
 </html>
