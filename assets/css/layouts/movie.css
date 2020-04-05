@@ -45,52 +45,56 @@
     font-size: 17px;
 }
 
-.rating-10 {
-    background: #329112;
+.rating-6 {
+    background: #209112;
     color: #fff;
 }
 
-.rating-9 {
-    background: #479611;
-    color: #fff;
-}
+/*.rating-9 {*/
+/*    background: #479611;*/
+/*    color: #fff;*/
+/*}*/
 
-.rating-8 {
+.rating-5 {
     background: #669f11;
     color: #fff;
 }
 
-.rating-7 {
+.rating-4 {
     background: #9bad0f;
     color: #fff;
 }
 
-.rating-6 {
+.rating-3 {
     background: #dcb20e;
 }
 
-.rating-5 {
-    background: #eb900d;
-    color: #fff;
-}
+/*.rating-5 {*/
+/*    background: #eb900d;*/
+/*    color: #fff;*/
+/*}*/
 
-.rating-4 {
-    background: #e17c0e;
-    color: #fff;
-}
+/*.rating-4 {*/
+/*    background: #e17c0e;*/
+/*    color: #fff;*/
+/*}*/
 
-.rating-3 {
+.rating-2 {
     background: #c9550e;
     color: #fff;
 }
 
-.rating-2 {
-    background: #ac290f;
-    color: #fff;
-}
+/*.rating-2 {*/
+/*    background: #ac290f;*/
+/*    color: #fff;*/
+/*}*/
 
 .rating-1 {
     background: #9d100f;
     color: #fff;
 }
 
+.break {
+    flex-basis: 100%;
+    height: 0;
+}

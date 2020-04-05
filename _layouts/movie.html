@@ -16,11 +16,30 @@
         <p class="filter-wrap"><input type="text" id="filter" onkeyup="filter()" placeholder="Search..." /></p>
 
         <div class="list">
+            {% assign lastRating = " 6" %}
             {% for row in mydata %}
-            <div class="item rating-{{ row.Rating | strip }}">
-                <span class="name">{{ row.Name }}</span>
-                <span class="rating">{{ row.Rating }}</span>
-            </div>
+                {% assign currentRating = row.Rating %}
+                {% if row.Rating == " 1" %}
+                    {% assign ratingValue = "Hated" %}
+                {% elsif row.Rating == " 2" %}
+                    {% assign ratingValue = "Disliked" %}
+                {% elsif row.Rating == " 3" %}
+                    {% assign ratingValue = "Average" %}
+                {% elsif row.Rating == " 4" %}
+                    {% assign ratingValue = "Liked" %}
+                {% elsif row.Rating == " 5" %}
+                    {% assign ratingValue = "Loved" %}
+                {% elsif row.Rating == " 6" %}
+                    {% assign ratingValue = "Godtier" %}
+                {% endif %}
+                {% if lastRating != row.Rating %}
+                    <div class="break"></div>
+                    {% assign lastRating = row.Rating %}
+                {% endif %}
+                <div class="item rating-{{ row.Rating | strip }}">
+                    <span class="name">{{ row.Name }}</span>
+                    <span class="rating">{{ ratingValue }}</span>
+                </div>
             {% endfor %}
         </div>
     </section>
