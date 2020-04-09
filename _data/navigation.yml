@@ -1,4 +1,4 @@
 - name: Movie list
-  url: index.html
+  url: /
 - name: TV list
   url: tv
