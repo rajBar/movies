@@ -61,7 +61,7 @@
 .last-5-item span:first-child {
     font-weight: 500;
     /*font-size: 1.2rem;*/
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .item span:nth-child(2n) {
@@ -71,8 +71,14 @@
 }
 .last-5-item span:nth-child(2n) {
     display: block;
+    padding-top: 3px;
     /*font-size: 1.2rem;*/
-    font-size: 11px;
+    font-size: 13px;
+}
+.last-5-item span:nth-child(3n) {
+    display: block;
+    /*font-size: 1.2rem;*/
+    font-size: 15px;
 }
 
 .rating-6 {
