@@ -40,9 +40,10 @@
     border: 1px solid #111;
 }
 .last-5-item {
-    margin: 0 0 10px 10px;
-    padding: 8px;
+    margin: 0 0 8px 8px;
+    padding: 5px 7px 5px 7px;
     border: 1px solid #111;
+    min-width: 107px;
 }
 
 .movie-top {
@@ -61,7 +62,7 @@
 .last-5-item span:first-child {
     font-weight: 500;
     /*font-size: 1.2rem;*/
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .item span:nth-child(2n) {
