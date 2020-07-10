@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body>
+    {% include masthead.html %}
+    <section class="main">
+        {% assign movieData = site.data.movie-ratings | group_by: 'Name' | reverse %}
+
+        <div class="list-chronological">
+            {% for r in movieData %}
+                {% assign ratingsTitleSorted = r.items | sort:'Name' %}
+                {% for row in ratingsTitleSorted %}
+                    {% if row.Date %}
+                        {% assign currentRating = row.Rating %}
+                        {% if row.Rating == " 1" %}
+                            {% assign ratingValue = "Hated" %}
+                        {% elsif row.Rating == " 2" %}
+                            {% assign ratingValue = "Disliked" %}
+                        {% elsif row.Rating == " 3" %}
+                            {% assign ratingValue = "Average" %}
+                        {% elsif row.Rating == " 4" %}
+                            {% assign ratingValue = "Liked" %}
+                        {% elsif row.Rating == " 5" %}
+                            {% assign ratingValue = "Loved" %}
+                        {% elsif row.Rating == " 6" %}
+                            {% assign ratingValue = "God tier" %}
+                        {% endif %}
+                        <div class="date">
+                            {{ row.Date }}
+                        </div>
+                        <div class="item-chronological rating-{{ row.Rating | strip }}">
+                            <span class="name">{{ row.Name }}</span>
+                            <span class="rating">{{ ratingValue }}</span>
+                        </div>
+                        <div class="big-dot">•</div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
