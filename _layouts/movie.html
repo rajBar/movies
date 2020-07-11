@@ -26,26 +26,33 @@
                     <div class="break"></div>
                     {% assign movies = site.data.movie-ratings | reverse  %}
                     {% for i in (0..4) %}
+                        {% assign location=movies[i].Location %}
                         <div class="last-5-item rating-{{ movies[i].Rating | strip }}">
                             <span class="name">{{ movies[i].Name }}</span>
                             {% if movies[i].Rating == " 1" %}
                                 <span class="rating">Hated</span>
                                 <span class="rating">{{ movies[i].Date }}</span>
+                                {% include location-icon.html location=location %}
                             {% elsif movies[i].Rating == " 2" %}
                                 <span class="rating">Disliked</span>
                                 <span class="rating">{{ movies[i].Date }}</span>
+                                {% include location-icon.html location=location %}
                             {% elsif movies[i].Rating == " 3" %}
                                 <span class="rating">Average</span>
                                 <span class="rating">{{ movies[i].Date }}</span>
+                                {% include location-icon.html location=location %}
                             {% elsif movies[i].Rating == " 4" %}
                                 <span class="rating">Liked</span>
                                 <span class="rating">{{ movies[i].Date }}</span>
+                                {% include location-icon.html location=location %}
                             {% elsif movies[i].Rating == " 5" %}
                                 <span class="rating">Loved</span>
                                 <span class="rating">{{ movies[i].Date }}</span>
+                                {% include location-icon.html location=location %}
                             {% elsif movies[i].Rating == " 6" %}
                                 <span class="rating">All Time Favourite</span>
                                 <span class="rating">{{ movies[i].Date }}</span>
+                                {% include location-icon.html location=location %}
                             {% endif %}
                         </div>
                     {% endfor %}

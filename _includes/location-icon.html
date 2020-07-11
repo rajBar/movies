@@ -1,0 +1,13 @@
+<div>
+    {% if include.location == " n" %}
+        <img src="https://img.icons8.com/color/48/000000/netflix.png"/>
+    {% elsif include.location == " p" %}
+        <img style="width: 50px; top: 12px; position: relative" src="/assets/images/prime.svg"/>
+    {% elsif include.location == " c" %}
+        <img src="https://img.icons8.com/ios/50/000000/cinema-.png"/>
+    {% elsif include.location == " t" %}
+        <img src="https://img.icons8.com/ios/50/000000/retro-tv.png"/>
+    {% elsif include.location == " r" %}
+        <img style="width: 50px; top: 20px; position: relative" src="/assets/images/rakuten.svg"/>
+    {% endif %}
+</div>
