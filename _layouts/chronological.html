@@ -5,8 +5,9 @@
     {% include masthead.html %}
     <section class="main">
         {% assign movieData = site.data.movie-ratings | group_by: 'Name' | reverse %}
+        {% assign switch = 1 %}
 
-        <div class="list-chronological">
+        <div class="timeline">
             {% for r in movieData %}
                 {% assign ratingsTitleSorted = r.items | sort:'Name' %}
                 {% for row in ratingsTitleSorted %}
@@ -25,18 +26,31 @@
                         {% elsif row.Rating == " 6" %}
                             {% assign ratingValue = "God tier" %}
                         {% endif %}
-                        <div class="date">
-                            {{ row.Date }}
-                        </div>
-                        <div class="item-chronological rating-{{ row.Rating | strip }}">
-                            <span class="name">{{ row.Name }}</span>
-                            <span class="rating">{{ ratingValue }}</span>
-                        </div>
-                        <div class="big-dot">•</div>
+                        {% if switch == 1 %}
+                            <div class="container left">
+                                <div class="content item-{{ row.Rating | strip }}">
+                                    <h3>{{ row.Date }}</h3>
+                                    <h2>{{ row.Name }}</h2>
+                                    <h4>{{ ratingValue }}</h4>
+                                </div>
+                            </div>
+                            {% assign switch = 2 %}
+                        {% elsif switch == 2 %}
+                            <div class="container right">
+                                <div class="content item-{{ row.Rating | strip }}">
+                                    <h3>{{ row.Date }}</h3>
+                                    <h2>{{ row.Name }}</h2>
+                                    <h4>{{ ratingValue }}</h4>
+                                </div>
+                            </div>
+                            {% assign switch = 1 %}
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
             {% endfor %}
         </div>
+
+
     </section>
 </body>
 </html>

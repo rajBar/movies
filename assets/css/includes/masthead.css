@@ -35,7 +35,8 @@
     display: block;
     text-decoration: none;
     padding: 8px 4px;
-    color: rgb(28, 28, 28);
+    /*color: rgb(28, 28, 28);*/
+    color: whitesmoke;
     border-bottom: 3px solid rgba(0, 0, 0, 0);
 }
 
