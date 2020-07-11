@@ -1,4 +1,6 @@
-- name: Movie list
+- name: All Movies
   url: /
+- name: Chronological Movies
+  url: movie-chronological
 - name: TV list
   url: tv

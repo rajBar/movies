@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body>
+    {% include masthead.html %}
+    <section class="main">
+        {% assign movieData = site.data.movie-ratings | group_by: 'Name' | reverse %}
+        {% assign switch = 1 %}
+
+        <div class="timeline">
+            {% for r in movieData %}
+                {% assign ratingsTitleSorted = r.items | sort:'Name' %}
+                {% for row in ratingsTitleSorted %}
+                    {% if row.Date %}
+                        {% assign currentRating = row.Rating %}
+                        {% if row.Rating == " 1" %}
+                            {% assign ratingValue = "Hated" %}
+                        {% elsif row.Rating == " 2" %}
+                            {% assign ratingValue = "Disliked" %}
+                        {% elsif row.Rating == " 3" %}
+                            {% assign ratingValue = "Average" %}
+                        {% elsif row.Rating == " 4" %}
+                            {% assign ratingValue = "Liked" %}
+                        {% elsif row.Rating == " 5" %}
+                            {% assign ratingValue = "Loved" %}
+                        {% elsif row.Rating == " 6" %}
+                            {% assign ratingValue = "God tier" %}
+                        {% endif %}
+                        {% if switch == 1 %}
+                            <div class="container left">
+                                <div class="content item-{{ row.Rating | strip }}">
+                                    <h3>{{ row.Date }}</h3>
+                                    <h2>{{ row.Name }}</h2>
+                                    <h4>{{ ratingValue }}</h4>
+                                </div>
+                            </div>
+                            {% assign switch = 2 %}
+                        {% elsif switch == 2 %}
+                            <div class="container right">
+                                <div class="content item-{{ row.Rating | strip }}">
+                                    <h3>{{ row.Date }}</h3>
+                                    <h2>{{ row.Name }}</h2>
+                                    <h4>{{ ratingValue }}</h4>
+                                </div>
+                            </div>
+                            {% assign switch = 1 %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+
+    </section>
+</body>
+</html>
