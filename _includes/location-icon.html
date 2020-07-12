@@ -1,11 +1,13 @@
 {% if include.location == " n" %}
-    <img src="https://img.icons8.com/color/48/000000/netflix.png"/>
+    <img style="width: 50px; top: 18px; position: relative; margin-bottom: 25px" src="{{site.baseurl}}/assets/images/netflix.svg"/>
 {% elsif include.location == " p" %}
     <img style="width: 50px; top: 12px; position: relative" src="{{site.baseurl}}/assets/images/prime.svg"/>
 {% elsif include.location == " c" %}
-    <img src="https://img.icons8.com/ios/50/000000/cinema-.png"/>
+    <img src="https://img.icons8.com/ios/50/000000/documentary.png"/>
 {% elsif include.location == " t" %}
     <img src="https://img.icons8.com/ios/50/000000/retro-tv.png"/>
 {% elsif include.location == " r" %}
     <img style="width: 50px; top: 18px; position: relative" src="{{site.baseurl}}/assets/images/rakuten.svg"/>
+{% elsif include.location == " d" %}
+    <img style="width: 50px; top: 10px; position: relative" src="{{site.baseurl}}/assets/images/disney.svg"/>
 {% endif %}
