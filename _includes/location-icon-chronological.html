@@ -1,0 +1,13 @@
+{% if include.location == " n" %}
+    <img style="width: 50px; margin-left: 15px" src="{{site.baseurl}}/assets/images/netflix.svg"/>
+{% elsif include.location == " p" %}
+    <img style="width: 50px; margin-left: 15px; top: 10px; position: relative" src="{{site.baseurl}}/assets/images/prime.svg"/>
+{% elsif include.location == " c" %}
+    <img style="width: 50px; margin-left: 15px; top: 10px; position: relative" src="{{site.baseurl}}/assets/images/cinema.svg"/>
+{% elsif include.location == " t" %}
+    <img style="width: 50px; margin-left: 15px; top: 15px; position: relative" src="{{site.baseurl}}/assets/images/television.svg"/>
+{% elsif include.location == " r" %}
+    <img style="width: 50px; margin-left: 15px;" src="{{site.baseurl}}/assets/images/rakuten.svg"/>
+{% elsif include.location == " d" %}
+    <img style="width: 50px; margin-left: 15px; top: 5px; position: relative" src="{{site.baseurl}}/assets/images/disney.svg"/>
+{% endif %}

@@ -30,7 +30,10 @@
                             <div class="container left">
                                 <div class="content item-{{ row.Rating | strip }}">
                                     <h3>{{ row.Date }}</h3>
-                                    <h2>{{ row.Name }}</h2>
+                                    <span style="overflow-x: auto">
+                                        <h2 style="display: inline-block">{{ row.Name }}</h2>
+                                        {% include location-icon-chronological.html location=row.Location %}
+                                    </span>
                                     <h4>{{ ratingValue }}</h4>
                                 </div>
                             </div>
@@ -39,7 +42,10 @@
                             <div class="container right">
                                 <div class="content item-{{ row.Rating | strip }}">
                                     <h3>{{ row.Date }}</h3>
-                                    <h2>{{ row.Name }}</h2>
+                                    <span style="overflow-x: auto">
+                                        <h2 style="display: inline-block">{{ row.Name }}</h2>
+                                        {% include location-icon-chronological.html location=row.Location %}
+                                    </span>
                                     <h4>{{ ratingValue }}</h4>
                                 </div>
                             </div>
