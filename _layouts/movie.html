@@ -4,6 +4,7 @@
 <body>
     {% include masthead.html %}
     <section class="main">
+        {% assign rating_array = "" | split: ',' %}
         {% assign mydata = site.data.movie-ratings %}
         {% if page.dataset == "movies" %}
             {% assign ratings = site.data.movie-ratings | group_by: 'Rating' %}
@@ -63,10 +64,12 @@
         <p class="filter-wrap"><input type="text" id="filter" onkeyup="filter()" placeholder="Search..." /></p>
 
         <div class="list">
+            {% assign counter = 0 %}
             {% assign lastRating = " 6" %}
             {% for r in ratingsSorted %}
                 {% assign ratingsTitleSorted = r.items | sort:'Name' %}
                 {% for row in ratingsTitleSorted %}
+                    {% assign counter = counter | plus:1 %}
                     {% assign currentRating = row.Rating %}
                     {% if row.Rating == " 1" %}
                         {% assign ratingValue = "Hated" %}
@@ -84,6 +87,8 @@
                     {% if lastRating != row.Rating %}
                         <div class="break"></div>
                         {% assign lastRating = row.Rating %}
+                        {% assign rating_array = rating_array | push: counter %}
+                        {% assign counter = 0 %}
                     {% endif %}
                     <div class="item rating-{{ row.Rating | strip }}">
                         <span class="name">{{ row.Name }}</span>
@@ -91,6 +96,14 @@
                     </div>
                 {% endfor %}
             {% endfor %}
+            {% assign counter = counter | plus:1 %}
+            {% assign rating_array = rating_array | push: counter %}
+        </div>
+        <div>
+            <p class="bottom-rating-list">
+                {% assign godlike_rating = rating_array[0] | minus:1 %}
+                Godlike: {{ godlike_rating }} | Loved: {{ rating_array[1] }} | Liked: {{ rating_array[2] }} | Average: {{ rating_array[3] }} | Disliked: {{ rating_array[4] }} | Hated: {{ rating_array[5] }}
+            </p>
         </div>
     </section>
 
