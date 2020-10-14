@@ -20,6 +20,11 @@
     vertical-align: top;
 }
 
+.masthead-title > a {
+    text-decoration: none;
+    color: white;
+}
+
 .masthead ul {
     list-style: none;
     padding: 0;
