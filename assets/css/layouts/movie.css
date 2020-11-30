@@ -46,6 +46,7 @@
     padding: 5px 7px 5px 7px;
     /*border: 1px solid #111;*/
     min-width: 107px;
+    border-radius: 5px;
 }
 
 .movie-top {
@@ -87,6 +88,7 @@
 .rating-6 {
     background: #209112;
     color: #fff;
+    border-radius: 10px;
 }
 
 /*.rating-9 {*/
@@ -97,16 +99,19 @@
 .rating-5 {
     background: #669f11;
     color: #fff;
+    border-radius: 10px;
 }
 
 .rating-4 {
     background: #9bad0f;
     color: #fff;
+    border-radius: 10px;
 }
 
 .rating-3 {
     background: #dcb20e;
     color: black;
+    border-radius: 10px;
 }
 
 /*.rating-5 {*/
@@ -122,6 +127,7 @@
 .rating-2 {
     background: #c9550e;
     color: #fff;
+    border-radius: 10px;
 }
 
 /*.rating-2 {*/
@@ -132,6 +138,7 @@
 .rating-1 {
     background: #9d100f;
     color: #fff;
+    border-radius: 10px;
 }
 
 .break {
