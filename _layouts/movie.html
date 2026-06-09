@@ -8,11 +8,11 @@
         {% assign mydata = site.data.movie-ratings %}
         {% if page.dataset == "movies" %}
             {% assign ratings = site.data.movie-ratings | group_by: 'Rating' %}
-            {% assign ratingsSorted = (ratings | sort:'name') | reverse %}
+            {% assign ratingsSorted = ratings | sort:'name' | reverse %}
         {% elsif page.dataset == "tv shows" %}
             {% assign mydata = site.data.tv-ratings %}
             {% assign ratings = site.data.tv-ratings | group_by: 'Rating' %}
-            {% assign ratingsSorted = (ratings | sort:'name') | reverse %}
+            {% assign ratingsSorted = ratings | sort:'name' | reverse %}
         {% endif %}
 
         <div class="movie-top">
@@ -93,6 +93,78 @@
                     <div class="item rating-{{ row.Rating | strip }}">
                         <span class="name">{{ row.Name }}</span>
                         <span class="rating">{{ ratingValue }}</span>
+                        {% assign date_stripped = row.Date | strip %}
+                        {% assign location_stripped = row.Location | strip %}
+                        {% assign notes_stripped = row.Notes | strip %}
+                        {% if date_stripped != "" or location_stripped != "" or notes_stripped != "" %}
+                            {% assign loc = location_stripped %}
+                            {% assign platform_name = "" %}
+                            {% assign platform_logo = "" %}
+                            {% if loc == "n" %}
+                                {% assign platform_name = "Netflix" %}
+                                {% assign platform_logo = "netflix.svg" %}
+                            {% elsif loc == "p" %}
+                                {% assign platform_name = "Prime Video" %}
+                                {% assign platform_logo = "prime.svg" %}
+                            {% elsif loc == "c" %}
+                                {% assign platform_name = "Cinema" %}
+                                {% assign platform_logo = "cinema.svg" %}
+                            {% elsif loc == "t" %}
+                                {% assign platform_name = "Television" %}
+                                {% assign platform_logo = "television.svg" %}
+                            {% elsif loc == "r" %}
+                                {% assign platform_name = "Rakuten" %}
+                                {% assign platform_logo = "rakuten.svg" %}
+                            {% elsif loc == "d" %}
+                                {% assign platform_name = "Disney+" %}
+                                {% assign platform_logo = "disney.svg" %}
+                            {% elsif loc == "s" %}
+                                {% assign platform_name = "Now TV" %}
+                                {% assign platform_logo = "nowtv.svg" %}
+                            {% elsif loc == "f" %}
+                                {% assign platform_name = "Flight" %}
+                                {% assign platform_logo = "flight.svg" %}
+                            {% elsif loc == "a" %}
+                                {% assign platform_name = "Apple TV" %}
+                                {% assign platform_logo = "apple.svg" %}
+                            {% elsif loc == "b" %}
+                                {% assign platform_name = "BBC iPlayer" %}
+                                {% assign platform_logo = "bbc.svg" %}
+                            {% endif %}
+                            <div class="info-container" onmouseenter="adjustTooltip(this)" onmouseleave="resetTooltip(this)">
+                                <span class="info-icon">
+                                    <svg class="info-svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                    </svg>
+                                </span>
+                                <div class="tooltip-content">
+                                    {% if date_stripped != "" %}
+                                        <div class="tooltip-row">
+                                            <span class="tooltip-label">Watched</span>
+                                            <span class="tooltip-value">{{ date_stripped }}</span>
+                                        </div>
+                                    {% endif %}
+                                    {% if platform_name != "" %}
+                                        <div class="tooltip-row">
+                                            <span class="tooltip-label">Platform</span>
+                                            <span class="tooltip-value">
+                                                <img src="{{ site.baseurl }}/assets/images/{{ platform_logo }}" class="tooltip-logo" alt="{{ platform_name }}" />
+                                                {{ platform_name }}
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    {% if notes_stripped != "" %}
+                                        <div class="tooltip-row">
+                                            <span class="tooltip-label">Notes</span>
+                                            <span class="tooltip-value notes-text">{{ notes_stripped }}</span>
+                                        </div>
+                                    {% endif %}
+                                    <div class="tooltip-arrow"></div>
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             {% endfor %}
@@ -108,6 +180,65 @@
     </section>
 
     <script>
+        function adjustTooltip(container) {
+            const tooltip = container.querySelector('.tooltip-content');
+            const arrow = container.querySelector('.tooltip-arrow');
+            if (!tooltip) return;
+
+            // Reset styles to get clean rect values
+            tooltip.style.left = '';
+            tooltip.style.right = '';
+            tooltip.style.transform = '';
+            if (arrow) {
+                arrow.style.left = '';
+                arrow.style.right = '';
+            }
+
+            const rect = tooltip.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const margin = 12;
+
+            if (rect.left < margin) {
+                const leftOffset = margin - containerRect.left;
+                tooltip.style.left = `${leftOffset}px`;
+                tooltip.style.right = 'auto';
+                tooltip.style.transform = 'translateY(0)';
+                if (arrow) {
+                    const containerWidth = container.offsetWidth || 14;
+                    const arrowCenter = containerWidth / 2;
+                    const arrowPosition = arrowCenter - leftOffset;
+                    arrow.style.left = `${arrowPosition}px`;
+                    arrow.style.right = 'auto';
+                }
+            } else if (rect.right > viewportWidth - margin) {
+                const rightOffset = (viewportWidth - margin) - containerRect.right;
+                tooltip.style.right = `${-rightOffset}px`;
+                tooltip.style.left = 'auto';
+                tooltip.style.transform = 'translateY(0)';
+                if (arrow) {
+                    const containerWidth = container.offsetWidth || 14;
+                    const arrowCenter = containerWidth / 2;
+                    const arrowPosition = arrowCenter + rightOffset;
+                    arrow.style.right = `${arrowPosition}px`;
+                    arrow.style.left = 'auto';
+                }
+            }
+        }
+
+        function resetTooltip(container) {
+            const tooltip = container.querySelector('.tooltip-content');
+            const arrow = container.querySelector('.tooltip-arrow');
+            if (!tooltip) return;
+            tooltip.style.left = '';
+            tooltip.style.right = '';
+            tooltip.style.transform = '';
+            if (arrow) {
+                arrow.style.left = '';
+                arrow.style.right = '';
+            }
+        }
+
         function filter() {
             const filterValue = document.getElementById('filter').value.toUpperCase();
             const items = document.getElementsByClassName('item');
