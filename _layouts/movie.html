@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 {% include head.html %}
+
 <body>
     {% include masthead.html %}
     <section class="main">
         {% assign rating_array = "" | split: ',' %}
         {% assign mydata = site.data.movie-ratings %}
         {% if page.dataset == "movies" %}
-            {% assign ratings = site.data.movie-ratings | group_by: 'Rating' %}
-            {% assign ratingsSorted = ratings | sort:'name' | reverse %}
+        {% assign ratings = site.data.movie-ratings | group_by: 'Rating' %}
+        {% assign ratingsSorted = ratings | sort:'name' | reverse %}
         {% elsif page.dataset == "tv shows" %}
-            {% assign mydata = site.data.tv-ratings %}
-            {% assign ratings = site.data.tv-ratings | group_by: 'Rating' %}
-            {% assign ratingsSorted = ratings | sort:'name' | reverse %}
+        {% assign mydata = site.data.tv-ratings %}
+        {% assign ratings = site.data.tv-ratings | group_by: 'Rating' %}
+        {% assign ratingsSorted = ratings | sort:'name' | reverse %}
         {% endif %}
 
         <div class="movie-top">
@@ -23,40 +24,40 @@
             <div class="vertical-line"></div>
 
             <div class="list">
-                    <p class="last5">Last 5 movies watched</p>
-                    <div class="break"></div>
-                    {% assign movies = site.data.movie-ratings | reverse  %}
-                    {% for i in (0..4) %}
-                        {% assign location=movies[i].Location %}
-                        <div class="last-5-item rating-{{ movies[i].Rating | strip }}">
-                            <span class="name">{{ movies[i].Name }}</span>
-                            {% if movies[i].Rating == " 1" %}
-                                <span class="rating">Hated</span>
-                                <span class="rating">{{ movies[i].Date }}</span>
-                                {% include location-icon.html location=location %}
-                            {% elsif movies[i].Rating == " 2" %}
-                                <span class="rating">Disliked</span>
-                                <span class="rating">{{ movies[i].Date }}</span>
-                                {% include location-icon.html location=location %}
-                            {% elsif movies[i].Rating == " 3" %}
-                                <span class="rating">Average</span>
-                                <span class="rating">{{ movies[i].Date }}</span>
-                                {% include location-icon.html location=location %}
-                            {% elsif movies[i].Rating == " 4" %}
-                                <span class="rating">Liked</span>
-                                <span class="rating">{{ movies[i].Date }}</span>
-                                {% include location-icon.html location=location %}
-                            {% elsif movies[i].Rating == " 5" %}
-                                <span class="rating">Loved</span>
-                                <span class="rating">{{ movies[i].Date }}</span>
-                                {% include location-icon.html location=location %}
-                            {% elsif movies[i].Rating == " 6" %}
-                                <span class="rating">All Time Favourite</span>
-                                <span class="rating">{{ movies[i].Date }}</span>
-                                {% include location-icon.html location=location %}
-                            {% endif %}
-                        </div>
-                    {% endfor %}
+                <p class="last5">Last 5 movies watched</p>
+                <div class="break"></div>
+                {% assign movies = site.data.movie-ratings | reverse %}
+                {% for i in (0..4) %}
+                {% assign location=movies[i].Location %}
+                <div class="last-5-item rating-{{ movies[i].Rating | strip }}">
+                    <span class="name">{{ movies[i].Name }}</span>
+                    {% if movies[i].Rating == " 1" %}
+                    <span class="rating">Hated</span>
+                    <span class="rating">{{ movies[i].Date }}</span>
+                    {% include location-icon.html location=location %}
+                    {% elsif movies[i].Rating == " 2" %}
+                    <span class="rating">Disliked</span>
+                    <span class="rating">{{ movies[i].Date }}</span>
+                    {% include location-icon.html location=location %}
+                    {% elsif movies[i].Rating == " 3" %}
+                    <span class="rating">Average</span>
+                    <span class="rating">{{ movies[i].Date }}</span>
+                    {% include location-icon.html location=location %}
+                    {% elsif movies[i].Rating == " 4" %}
+                    <span class="rating">Liked</span>
+                    <span class="rating">{{ movies[i].Date }}</span>
+                    {% include location-icon.html location=location %}
+                    {% elsif movies[i].Rating == " 5" %}
+                    <span class="rating">Loved</span>
+                    <span class="rating">{{ movies[i].Date }}</span>
+                    {% include location-icon.html location=location %}
+                    {% elsif movies[i].Rating == " 6" %}
+                    <span class="rating">All Time Favourite</span>
+                    <span class="rating">{{ movies[i].Date }}</span>
+                    {% include location-icon.html location=location %}
+                    {% endif %}
+                </div>
+                {% endfor %}
             </div>
             {% endif %}
         </div>
@@ -67,106 +68,108 @@
             {% assign counter = 0 %}
             {% assign lastRating = " 6" %}
             {% for r in ratingsSorted %}
-                {% assign ratingsTitleSorted = r.items | sort:'Name' %}
-                {% for row in ratingsTitleSorted %}
-                    {% assign counter = counter | plus:1 %}
-                    {% assign currentRating = row.Rating %}
-                    {% if row.Rating == " 1" %}
-                        {% assign ratingValue = "Hated" %}
-                    {% elsif row.Rating == " 2" %}
-                        {% assign ratingValue = "Disliked" %}
-                    {% elsif row.Rating == " 3" %}
-                        {% assign ratingValue = "Average" %}
-                    {% elsif row.Rating == " 4" %}
-                        {% assign ratingValue = "Liked" %}
-                    {% elsif row.Rating == " 5" %}
-                        {% assign ratingValue = "Loved" %}
-                    {% elsif row.Rating == " 6" %}
-                        {% assign ratingValue = "God tier" %}
-                    {% endif %}
-                    {% if lastRating != row.Rating %}
-                        <div class="break"></div>
-                        {% assign lastRating = row.Rating %}
-                        {% assign rating_array = rating_array | push: counter %}
-                        {% assign counter = 0 %}
-                    {% endif %}
-                    <div class="item rating-{{ row.Rating | strip }}">
-                        <span class="name">{{ row.Name }}</span>
-                        <span class="rating">{{ ratingValue }}</span>
-                        {% assign date_stripped = row.Date | strip %}
-                        {% assign location_stripped = row.Location | strip %}
-                        {% assign notes_stripped = row.Notes | strip %}
-                        {% if date_stripped != "" or location_stripped != "" or notes_stripped != "" %}
-                            {% assign loc = location_stripped %}
-                            {% assign platform_name = "" %}
-                            {% assign platform_logo = "" %}
-                            {% if loc == "n" %}
-                                {% assign platform_name = "Netflix" %}
-                                {% assign platform_logo = "netflix.svg" %}
-                            {% elsif loc == "p" %}
-                                {% assign platform_name = "Prime Video" %}
-                                {% assign platform_logo = "prime.svg" %}
-                            {% elsif loc == "c" %}
-                                {% assign platform_name = "Cinema" %}
-                                {% assign platform_logo = "cinema.svg" %}
-                            {% elsif loc == "t" %}
-                                {% assign platform_name = "Television" %}
-                                {% assign platform_logo = "television.svg" %}
-                            {% elsif loc == "r" %}
-                                {% assign platform_name = "Rakuten" %}
-                                {% assign platform_logo = "rakuten.svg" %}
-                            {% elsif loc == "d" %}
-                                {% assign platform_name = "Disney+" %}
-                                {% assign platform_logo = "disney.svg" %}
-                            {% elsif loc == "s" %}
-                                {% assign platform_name = "Now TV" %}
-                                {% assign platform_logo = "nowtv.svg" %}
-                            {% elsif loc == "f" %}
-                                {% assign platform_name = "Flight" %}
-                                {% assign platform_logo = "flight.svg" %}
-                            {% elsif loc == "a" %}
-                                {% assign platform_name = "Apple TV" %}
-                                {% assign platform_logo = "apple.svg" %}
-                            {% elsif loc == "b" %}
-                                {% assign platform_name = "BBC iPlayer" %}
-                                {% assign platform_logo = "bbc.svg" %}
-                            {% endif %}
-                            <div class="info-container" onmouseenter="adjustTooltip(this)" onmouseleave="resetTooltip(this)">
-                                <span class="info-icon">
-                                    <svg class="info-svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                                    </svg>
-                                </span>
-                                <div class="tooltip-content">
-                                    {% if date_stripped != "" %}
-                                        <div class="tooltip-row">
-                                            <span class="tooltip-label">Watched</span>
-                                            <span class="tooltip-value">{{ date_stripped }}</span>
-                                        </div>
-                                    {% endif %}
-                                    {% if platform_name != "" %}
-                                        <div class="tooltip-row">
-                                            <span class="tooltip-label">Platform</span>
-                                            <span class="tooltip-value">
-                                                <img src="{{ site.baseurl }}/assets/images/{{ platform_logo }}" class="tooltip-logo" alt="{{ platform_name }}" />
-                                                {{ platform_name }}
-                                            </span>
-                                        </div>
-                                    {% endif %}
-                                    {% if notes_stripped != "" %}
-                                        <div class="tooltip-row">
-                                            <span class="tooltip-label">Notes</span>
-                                            <span class="tooltip-value notes-text">{{ notes_stripped }}</span>
-                                        </div>
-                                    {% endif %}
-                                    <div class="tooltip-arrow"></div>
-                                </div>
-                            </div>
+            {% assign ratingsTitleSorted = r.items | sort:'Name' %}
+            {% for row in ratingsTitleSorted %}
+            {% assign counter = counter | plus:1 %}
+            {% assign currentRating = row.Rating %}
+            {% if row.Rating == " 1" %}
+            {% assign ratingValue = "Hated" %}
+            {% elsif row.Rating == " 2" %}
+            {% assign ratingValue = "Disliked" %}
+            {% elsif row.Rating == " 3" %}
+            {% assign ratingValue = "Average" %}
+            {% elsif row.Rating == " 4" %}
+            {% assign ratingValue = "Liked" %}
+            {% elsif row.Rating == " 5" %}
+            {% assign ratingValue = "Loved" %}
+            {% elsif row.Rating == " 6" %}
+            {% assign ratingValue = "God tier" %}
+            {% endif %}
+            {% if lastRating != row.Rating %}
+            <div class="break"></div>
+            {% assign lastRating = row.Rating %}
+            {% assign rating_array = rating_array | push: counter %}
+            {% assign counter = 0 %}
+            {% endif %}
+            <div class="item rating-{{ row.Rating | strip }}">
+                <span class="name">{{ row.Name }}</span>
+                <span class="rating">{{ ratingValue }}</span>
+                {% assign date_stripped = row.Date | strip %}
+                {% assign location_stripped = row.Location | strip %}
+                {% assign notes_stripped = row.Notes | strip %}
+                {% if date_stripped != "" or location_stripped != "" or notes_stripped != "" %}
+                {% assign loc = location_stripped %}
+                {% assign platform_name = "" %}
+                {% assign platform_logo = "" %}
+                {% if loc == "n" %}
+                {% assign platform_name = "Netflix" %}
+                {% assign platform_logo = "netflix.svg" %}
+                {% elsif loc == "p" %}
+                {% assign platform_name = "Prime Video" %}
+                {% assign platform_logo = "prime.svg" %}
+                {% elsif loc == "c" %}
+                {% assign platform_name = "Cinema" %}
+                {% assign platform_logo = "cinema.svg" %}
+                {% elsif loc == "t" %}
+                {% assign platform_name = "Television" %}
+                {% assign platform_logo = "television.svg" %}
+                {% elsif loc == "r" %}
+                {% assign platform_name = "Rakuten" %}
+                {% assign platform_logo = "rakuten.svg" %}
+                {% elsif loc == "d" %}
+                {% assign platform_name = "Disney+" %}
+                {% assign platform_logo = "disney.svg" %}
+                {% elsif loc == "s" %}
+                {% assign platform_name = "Now TV" %}
+                {% assign platform_logo = "nowtv.svg" %}
+                {% elsif loc == "f" %}
+                {% assign platform_name = "Flight" %}
+                {% assign platform_logo = "flight.svg" %}
+                {% elsif loc == "a" %}
+                {% assign platform_name = "Apple TV" %}
+                {% assign platform_logo = "apple.svg" %}
+                {% elsif loc == "b" %}
+                {% assign platform_name = "BBC iPlayer" %}
+                {% assign platform_logo = "bbc.svg" %}
+                {% endif %}
+                <div class="info-container" onmouseenter="adjustTooltip(this)" onmouseleave="resetTooltip(this)">
+                    <span class="info-icon">
+                        <svg class="info-svg" viewBox="0 0 24 24" width="14" height="14" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </span>
+                    <div class="tooltip-content">
+                        {% if date_stripped != "" %}
+                        <div class="tooltip-row">
+                            <span class="tooltip-label">Watched</span>
+                            <span class="tooltip-value">{{ date_stripped }}</span>
+                        </div>
                         {% endif %}
+                        {% if platform_name != "" %}
+                        <div class="tooltip-row">
+                            <span class="tooltip-label">Platform</span>
+                            <span class="tooltip-value">
+                                <img src="{{ site.baseurl }}/assets/images/{{ platform_logo }}" class="tooltip-logo"
+                                    alt="{{ platform_name }}" />
+                                {{ platform_name }}
+                            </span>
+                        </div>
+                        {% endif %}
+                        {% if notes_stripped != "" %}
+                        <div class="tooltip-row">
+                            <span class="tooltip-label">Notes</span>
+                            <span class="tooltip-value notes-text">{{ notes_stripped }}</span>
+                        </div>
+                        {% endif %}
+                        <div class="tooltip-arrow"></div>
                     </div>
-                {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
             {% endfor %}
             {% assign counter = counter | plus:1 %}
             {% assign rating_array = rating_array | push: counter %}
@@ -174,7 +177,8 @@
         <div>
             <p class="bottom-rating-list">
                 {% assign godlike_rating = rating_array[0] | minus:1 %}
-                God Tier: {{ godlike_rating }} | Loved: {{ rating_array[1] }} | Liked: {{ rating_array[2] }} | Average: {{ rating_array[3] }} | Disliked: {{ rating_array[4] }} | Hated: {{ rating_array[5] }}
+                God Tier: {{ godlike_rating }} | Loved: {{ rating_array[1] }} | Liked: {{ rating_array[2] }} | Average:
+                {{ rating_array[3] }} | Disliked: {{ rating_array[4] }} | Hated: {{ rating_array[5] }}
             </p>
         </div>
     </section>
@@ -274,10 +278,11 @@
             const xhr = new XMLHttpRequest();
             xhr.open("POST", url, true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send();
+            //xhr.send();
         }
 
         sendTracker();
     </script>
 </body>
+
 </html>

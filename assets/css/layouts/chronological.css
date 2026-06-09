@@ -21,11 +21,12 @@
     content: '';
     position: absolute;
     width: 6px;
-    background-color: white;
+    background-color: var(--timeline-line-color);
     top: 0;
     bottom: 0;
     left: 50%;
     margin-left: -3px;
+    transition: background-color 0.3s ease;
 }
 
 /* Container around content */
@@ -43,11 +44,12 @@
     width: 25px;
     height: 25px;
     right: -17px;
-    background-color: white;
+    background-color: var(--timeline-dot-bg);
     border: 4px solid #FF9F55;
     top: 15px;
     border-radius: 50%;
     z-index: 1;
+    transition: background-color 0.3s ease;
 }
 
 /* Place the container to the left */
@@ -72,7 +74,7 @@
     border: medium solid white;
     border-width: 10px 0 10px 10px;
     border-color: transparent transparent transparent white;
-    box-shadow: 8px 11px 12px #1a1a1a;
+    transition: box-shadow 0.3s ease;
 }
 
 /* Add arrows to the right container (pointing left) */
@@ -96,15 +98,17 @@
 
 /* The actual content */
 .content {
-    box-shadow: 8px 11px 12px #1a1a1a;
+    box-shadow: var(--item-shadow);
     padding: 20px 30px;
     background-color: white;
     position: relative;
     border-radius: 16px;
+    transition: box-shadow 0.3s ease;
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
 @media screen and (max-width: 600px) {
+
     /* Place the timelime to the left */
     .timeline::after {
         left: 31px;
@@ -126,7 +130,8 @@
     }
 
     /* Make sure all circles are at the same spot */
-    .left::after, .right::after {
+    .left::after,
+    .right::after {
         left: 15px;
     }
 

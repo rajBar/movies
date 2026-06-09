@@ -22,7 +22,8 @@
 
 .masthead-title > a {
     text-decoration: none;
-    color: white;
+    color: var(--masthead-link-color);
+    transition: color 0.3s ease;
 }
 
 .masthead ul {
@@ -40,9 +41,9 @@
     display: block;
     text-decoration: none;
     padding: 8px 4px;
-    /*color: rgb(28, 28, 28);*/
-    color: whitesmoke;
+    color: var(--masthead-link-color);
     border-bottom: 3px solid rgba(0, 0, 0, 0);
+    transition: color 0.3s ease, border-bottom 0.2s ease;
 }
 
 .masthead li > a:hover {
@@ -56,4 +57,47 @@
 .masthead-nav {
     display: block;
     border-bottom: rgb(238, 238, 238);
+}
+
+/* Theme Toggle styles */
+.theme-toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    z-index: 100;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 8px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.light-mode .theme-toggle-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.theme-toggle-btn svg {
+    transition: stroke 0.3s ease;
+}
+
+/* Toggle icon visibility */
+.moon-icon {
+    display: none;
+}
+
+.light-mode .sun-icon {
+    display: none;
+}
+
+.light-mode .moon-icon {
+    display: block;
 }
