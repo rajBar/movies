@@ -4,3 +4,5 @@
   url: movie-chronological
 - name: TV list
   url: tv
+- name: Restaurants
+  url: restaurants

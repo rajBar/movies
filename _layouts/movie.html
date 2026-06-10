@@ -14,9 +14,23 @@
         {% assign mydata = site.data.tv-ratings %}
         {% assign ratings = site.data.tv-ratings | group_by: 'Rating' %}
         {% assign ratingsSorted = ratings | sort:'name' | reverse %}
+        {% elsif page.dataset == "restaurants" %}
+        {% assign mydata = site.data.restaurants %}
+        {% assign ratings = site.data.restaurants | group_by: 'Rating' %}
+        {% assign ratingsSorted = ratings | sort:'name' | reverse %}
         {% endif %}
 
         <div class="movie-top">
+            {% assign current_shows_count = 0 %}
+            {% if site.data.tv-current %}
+                {% for show in site.data.tv-current %}
+                    {% assign name_stripped = show.Name | strip %}
+                    {% if name_stripped != "" %}
+                        {% assign current_shows_count = current_shows_count | plus: 1 %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
             <p class="total">Total {{ page.dataset }}: {{ mydata.size }}</p>
 
 
@@ -59,6 +73,24 @@
                 </div>
                 {% endfor %}
             </div>
+            {% elsif page.dataset == "tv shows" and current_shows_count > 0 %}
+            <div class="vertical-line"></div>
+
+            <div class="list">
+                <p class="last5">Currently watching</p>
+                <div class="break"></div>
+                {% for show in site.data.tv-current %}
+                {% assign name_stripped = show.Name | strip %}
+                {% if name_stripped != "" %}
+                {% assign location_stripped = show.Location | strip %}
+                {% assign location_formatted = " " | append: location_stripped %}
+                <div class="last-5-item currently-watching-item">
+                    <span class="name">{{ name_stripped }}</span>
+                    {% include location-icon.html location=location_formatted %}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
             {% endif %}
         </div>
 
@@ -97,7 +129,10 @@
                 {% assign date_stripped = row.Date | strip %}
                 {% assign location_stripped = row.Location | strip %}
                 {% assign notes_stripped = row.Notes | strip %}
-                {% if date_stripped != "" or location_stripped != "" or notes_stripped != "" %}
+                {% assign city_stripped = row.City | strip %}
+                {% assign order_stripped = row.Order | strip %}
+                {% assign price_stripped = row.Price | strip %}
+                {% if date_stripped != "" or location_stripped != "" or notes_stripped != "" or city_stripped != "" or order_stripped != "" or price_stripped != "" %}
                 {% assign loc = location_stripped %}
                 {% assign platform_name = "" %}
                 {% assign platform_logo = "" %}
@@ -142,27 +177,68 @@
                         </svg>
                     </span>
                     <div class="tooltip-content">
-                        {% if date_stripped != "" %}
-                        <div class="tooltip-row">
-                            <span class="tooltip-label">Watched</span>
-                            <span class="tooltip-value">{{ date_stripped }}</span>
-                        </div>
-                        {% endif %}
-                        {% if platform_name != "" %}
-                        <div class="tooltip-row">
-                            <span class="tooltip-label">Platform</span>
-                            <span class="tooltip-value">
-                                <img src="{{ site.baseurl }}/assets/images/{{ platform_logo }}" class="tooltip-logo"
-                                    alt="{{ platform_name }}" />
-                                {{ platform_name }}
-                            </span>
-                        </div>
-                        {% endif %}
-                        {% if notes_stripped != "" %}
-                        <div class="tooltip-row">
-                            <span class="tooltip-label">Notes</span>
-                            <span class="tooltip-value notes-text">{{ notes_stripped }}</span>
-                        </div>
+                        {% if page.dataset == "restaurants" %}
+                            {% if city_stripped != "" %}
+                            <div class="tooltip-row">
+                                <span class="tooltip-label">City</span>
+                                <span class="tooltip-value">{{ city_stripped }}</span>
+                            </div>
+                            {% endif %}
+                            {% if date_stripped != "" %}
+                            <div class="tooltip-row">
+                                <span class="tooltip-label">Visited</span>
+                                <span class="tooltip-value">{{ date_stripped }}</span>
+                            </div>
+                            {% endif %}
+                            {% if order_stripped != "" %}
+                            <div class="tooltip-row">
+                                <span class="tooltip-label">Order</span>
+                                <span class="tooltip-value">{{ order_stripped }}</span>
+                            </div>
+                            {% endif %}
+                            {% if notes_stripped != "" %}
+                            <div class="tooltip-row">
+                                <span class="tooltip-label">Notes</span>
+                                <span class="tooltip-value notes-text">{{ notes_stripped }}</span>
+                            </div>
+                            {% endif %}
+                            {% if price_stripped != "" %}
+                                {% assign price_color = "#ffd700" %}
+                                {% if price_stripped == "£" %}
+                                    {% assign price_color = "#4caf50" %}
+                                {% elsif price_stripped == "££" %}
+                                    {% assign price_color = "#ff9800" %}
+                                {% elsif price_stripped == "£££" %}
+                                    {% assign price_color = "#f44336" %}
+                                {% endif %}
+                                <div class="tooltip-row">
+                                    <span class="tooltip-label">Price</span>
+                                    <span class="tooltip-value" style="font-weight: 700; color: {{ price_color }};">{{ price_stripped }}</span>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            {% if date_stripped != "" %}
+                            <div class="tooltip-row">
+                                <span class="tooltip-label">Watched</span>
+                                <span class="tooltip-value">{{ date_stripped }}</span>
+                            </div>
+                            {% endif %}
+                            {% if platform_name != "" %}
+                            <div class="tooltip-row">
+                                <span class="tooltip-label">Platform</span>
+                                <span class="tooltip-value">
+                                    <img src="{{ site.baseurl }}/assets/images/{{ platform_logo }}" class="tooltip-logo"
+                                        alt="{{ platform_name }}" />
+                                    {{ platform_name }}
+                                </span>
+                            </div>
+                            {% endif %}
+                            {% if notes_stripped != "" %}
+                            <div class="tooltip-row">
+                                <span class="tooltip-label">Notes</span>
+                                <span class="tooltip-value notes-text">{{ notes_stripped }}</span>
+                            </div>
+                            {% endif %}
                         {% endif %}
                         <div class="tooltip-arrow"></div>
                     </div>

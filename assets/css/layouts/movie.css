@@ -55,6 +55,20 @@
     /*border: 1px solid #111;*/
     min-width: 107px;
 }
+.currently-watching-item {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-color);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.currently-watching-item > .name {
+    display: block;
+    margin-bottom: 4px;
+}
+.light-mode .currently-watching-item {
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
 
 .movie-top {
     display: flex;
