@@ -1,114 +1,114 @@
 Name,Rating,Location,Notes
-Friends, 6
+Friends, 6, t
 Game of Thrones (S1 - S7), 6
 Game of Thrones (S8), 3
-Breaking Bad, 6
-Start up, 6
-How I Met Your Mother, 5
-Scrubs, 5
-Designated Survivor, 3
-The Inbetweeners, 5
-Phoneshop, 5
-Doctor Who, 2
-2 and a half men, 4
-Misfits, 4
-Love Island, 2
-Jack Ryan, 4
-The Punisher, 5
-Daredevil, 5
-Iron Fist, 1
-Jessica Jones, 2
-Luke Cage, 2
+Breaking Bad, 6, n
+Start up, 6, p
+How I Met Your Mother, 5, t
+Scrubs, 5, t
+Designated Survivor, 3, n
+The Inbetweeners, 5, t
+Phoneshop, 5, t
+Doctor Who, 2, t
+2 and a half men, 4, t
+Misfits, 4, t
+Love Island, 2, t
+Jack Ryan, 4, p
+The Punisher, 5, n
+Daredevil, 5, n
+Iron Fist, 1, n
+Jessica Jones, 2, n
+Luke Cage, 2, n
 Arrow, 4
 Flash, 2
-The Messiah, 4
-Big Mouth, 5
-Stranger Things, 5
-Altered Carbon, 4
+The Messiah, 4, n
+Big Mouth, 3, n
+Stranger Things, 5, n
+Altered Carbon, 4, n
 White Gold, 4
-Suits, 4
-Family Guy, 5
-The Simpsons, 4
-F1 Drive to Survive, 5
+Suits, 4, n
+Family Guy, 5, t
+The Simpsons, 4, t
+F1 Drive to Survive, 5, n
 Lucifer, 3
 Rick and Morty, 5
 Prison Break, 3
-Money Heist, 3
-Brooklyn Nine-Nine, 5
-Dexter, 5
+Money Heist, 3, n
+Brooklyn Nine-Nine, 5, n
+Dexter, 5, n
 The Walking Dead, 3
-New Girl, 5
-Friday Night Dinner, 5
-The Hustle, 5
-Mr Robot, 6
-American Gods, 2
-Shooter, 4
-The Goldbergs, 5
-Fresh Meat, 4
-Futurama, 4
-Happy Endings, 5
-The Mandalorian, 6
-The Office, 5
-Parks and Recreation, 5
-Modern Family, 5
-Sense8, 5
-Star Wars: The Clone Wars, 5
-The Sinner, 4
+New Girl, 5, t
+Friday Night Dinner, 5, t
+The Hustle, 5, t
+Mr Robot, 6, p
+American Gods, 2, p
+Shooter, 4, n
+The Goldbergs, 5, t
+Fresh Meat, 4, t
+Futurama, 4, t
+Happy Endings, 5, t
+The Mandalorian, 6, d
+The Office, 5, n
+Parks and Recreation, 5, n
+Modern Family, 5, n
+Sense8, 5, n
+Star Wars: The Clone Wars, 5, d
+The Sinner, 4, n
 The Tomorrow People, 4
 The Vampire Diaries, 2
 The Originals, 2
-Lost, 4
-Defending Jacob, 4
-Desperate Housewives, 4
-The Morning Show, 5
-The Boys, 6
-The Umbrella Academy, 5
-WandaVision, 5
-Ted Lasso, 5
-Mythic Quest, 4
-Superstore, 5
-Marcella, 4
-One of Us Is Lying, 3
-Wild Croc Territory, 4
-Monster: Jeffery Dahmer Story, 4
-The Recruit, 3
+Lost, 4, t
+Defending Jacob, 4, a
+Desperate Housewives, 4, t
+The Morning Show, 5, a
+The Boys, 6, p
+The Umbrella Academy, 3, n
+WandaVision, 4, d
+Ted Lasso, 3, a
+Mythic Quest, 4, a
+Superstore, 5, n
+Marcella, 4, n
+One of Us Is Lying, 3, n
+Wild Croc Territory, 4, n
+Monster: Jeffery Dahmer Story, 4, n
+The Recruit, 3, n
 How to Get Away With Murder, 3
-It's Always Sunny in Philadelphia, 4
-I AM A KILLER, 2
-The Lincoln Lawyer, 5
-Space Force, 3
+It's Always Sunny in Philadelphia, 4, n
+I AM A KILLER, 2, n
+The Lincoln Lawyer, 5, n
+Space Force, 3, n
 Liar, 5
-Inventing Anna, 3
+Inventing Anna, 3, n
 Stay Close, 4
-The Witcher, 4
-People Just Do Nothing, 5
-Inside Job, 4
+The Witcher, 4, n
+People Just Do Nothing, 5, b
+Inside Job, 4, n
 Clickbait, 5
-Squid Games, 5
-Killer Inside: The Mind of Aaron Hernandez, 3
-Crime Scene: The Vanishing at the Cecil Hotel, 3
+Squid Games, 5, n
+Killer Inside: The Mind of Aaron Hernandez, 3, n
+Crime Scene: The Vanishing at the Cecil Hotel, 3, n
 Falcon and the Winter Soldier, 4
 Nightstalker: The Hunt for a Serial Killer, 4
 The Ripper, 4
 Inside the World's Toughest Prisons, 2
-60 Days in, 4
-What If..., 4
-Ms. Marvel, 3
-Moon Knight, 4
-She Hulk, 2
-hawkeye, 5
-Loki, 5
-Boba Fett, 4
-Obi-Wan Kenobi, 5
-Ring of Power, 5,
-All of Nothing: Arsenal, 4
-The Terminal List, 5
-Reacher, 5
-Treadstone, 5
-The Night Manager, 5
-Nine Perfect Strangers, 5
-Clarksons Farm, 3
+60 Days in, 4, n
+What If..., 4, d
+Ms. Marvel, 3, d
+Moon Knight, 4, d
+She Hulk, 2, d
+hawkeye, 5, d
+Loki, 5, d
+Boba Fett, 4, d
+Obi-Wan Kenobi, 5, d
+Ring of Power, 5, p
+All of Nothing: Arsenal, 4, p
+The Terminal List, 5, p
+Reacher, 5, p
+Treadstone, 4, p
+The Night Manager, 5, b
+Nine Perfect Strangers, 5, p
+Clarksons Farm, 3, p
 Deceit, 2
-Secret Invasion, 5
-Andor, 6
+Secret Invasion, 4, d
+Andor, 6, d
 Running Point, 5, n, Genuinely hilarious and a super easy watch
