@@ -101,3 +101,89 @@
 .light-mode .moon-icon {
     display: block;
 }
+
+/* Dropdown Menu Styles */
+.masthead-nav li.has-dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.chevron-icon {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    vertical-align: middle;
+}
+
+.has-dropdown:hover .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: var(--tooltip-bg);
+    border: 1px solid var(--tooltip-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 8px;
+    padding: 6px 0 !important;
+    min-width: 180px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0 !important;
+    list-style: none;
+}
+
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Override list styles inside dropdown menu */
+.masthead-nav .dropdown-menu li {
+    display: block;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: left;
+}
+
+.masthead-nav .dropdown-menu li > a {
+    display: block;
+    padding: 10px 16px;
+    color: var(--tooltip-value-color);
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    border-bottom: none !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.masthead-nav .dropdown-menu li > a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: none !important;
+}
+
+.light-mode .masthead-nav .dropdown-menu li > a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.masthead-nav .dropdown-menu li > a.is-selected {
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-bottom: none !important;
+}
+
+.light-mode .masthead-nav .dropdown-menu li > a.is-selected {
+    background-color: rgba(0, 0, 0, 0.04);
+}

@@ -1,7 +1,7 @@
 <header class="masthead">
     <div class="masthead-top">
         <h1 class="masthead-title">
-            <a href="https://raj.bar">raj.Bar</a> / <a href="{{ '/' | relative_url }}">movies</a>
+            <a href="https://raj.bar">raj.Bar</a> / <a href="{{ '/' | relative_url }}">rankings</a>
         </h1>
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
             <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -22,12 +22,40 @@
     </div>
     <div class="masthead-nav">
         <ul>
-            {% for item in site.data.navigation %}<li>
-                <a href="{{ item.url | relative_url }}"
-                    {% if page.nav == item.name %} class="is-selected" {% endif %}>
-                    {{ item.name }}
-                </a>
-            </li>{% endfor %}
+            {% for item in site.data.navigation %}
+                {% if item.subitems %}
+                    <li class="nav-item has-dropdown">
+                        {% assign is_active = false %}
+                        {% for subitem in item.subitems %}
+                            {% if page.nav == subitem.name %}
+                                {% assign is_active = true %}
+                            {% endif %}
+                        {% endfor %}
+                        <a href="#" class="dropdown-toggle{% if is_active %} is-selected{% endif %}" onclick="return false;">
+                            {{ item.name }}
+                            <svg class="chevron-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for subitem in item.subitems %}
+                                <li>
+                                    <a href="{{ subitem.url | relative_url }}" {% if page.nav == subitem.name %}class="is-selected"{% endif %}>
+                                        {{ subitem.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{{ item.url | relative_url }}"
+                            {% if page.nav == item.name %} class="is-selected" {% endif %}>
+                            {{ item.name }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
         </ul>
     </div>
 </header>

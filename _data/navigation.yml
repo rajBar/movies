@@ -1,7 +1,9 @@
-- name: All Movies
-  url: /
-- name: Chronological Movies
-  url: movie-chronological
+- name: Movies
+  subitems:
+    - name: All Movies
+      url: /
+    - name: Chronological Movies
+      url: movie-chronological
 - name: TV list
   url: tv
 - name: Restaurants
