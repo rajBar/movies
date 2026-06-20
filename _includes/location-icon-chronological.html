@@ -1,21 +1,22 @@
-{% if include.location == " n" %}
+{% assign loc = include.location | strip %}
+{% if loc == "n" %}
     <img style="width: 50px; margin-left: 15px" src="{{site.baseurl}}/assets/images/netflix.svg"/>
-{% elsif include.location == " p" %}
+{% elsif loc == "p" %}
     <img style="width: 50px; margin-left: 15px; top: 10px; position: relative" src="{{site.baseurl}}/assets/images/prime.svg"/>
-{% elsif include.location == " c" %}
+{% elsif loc == "c" %}
     <img style="width: 50px; margin-left: 15px; top: 10px; position: relative" src="{{site.baseurl}}/assets/images/cinema.svg"/>
-{% elsif include.location == " t" %}
+{% elsif loc == "t" %}
     <img style="width: 50px; margin-left: 15px; top: 15px; position: relative" src="{{site.baseurl}}/assets/images/television.svg"/>
-{% elsif include.location == " r" %}
+{% elsif loc == "r" %}
     <img style="width: 50px; margin-left: 15px;" src="{{site.baseurl}}/assets/images/rakuten.svg"/>
-{% elsif include.location == " d" %}
+{% elsif loc == "d" %}
     <img style="width: 50px; margin-left: 15px; top: 5px; position: relative" src="{{site.baseurl}}/assets/images/disney.svg"/>
-{% elsif include.location == " s" %}
+{% elsif loc == "s" %}
     <img style="width: 50px; margin-left: 15px; position: relative;" src="{{site.baseurl}}/assets/images/nowtv.svg"/>
-{% elsif include.location == " f" %}
+{% elsif loc == "f" %}
     <img style="width: 50px; margin-left: 15px; position: relative; top: 15px;" src="{{site.baseurl}}/assets/images/flight.svg"/>
-{% elsif include.location == " a" %}
-    <img style="width: 50px; margin-left: 15px; top 10px; position: relative;" src="{{site.baseurl}}/assets/images/apple.svg"/>
-{% elsif include.location == " b" %}
-    <img style="width: 75px; margin-left: 15px; top 8px; position: relative;" src="{{site.baseurl}}/assets/images/bbc.svg"/>
+{% elsif loc == "a" %}
+    <img style="width: 50px; margin-left: 15px; top: 10px; position: relative;" src="{{site.baseurl}}/assets/images/apple.svg"/>
+{% elsif loc == "b" %}
+    <img style="width: 75px; margin-left: 15px; top: 8px; position: relative;" src="{{site.baseurl}}/assets/images/bbc.svg"/>
 {% endif %}

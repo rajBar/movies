@@ -1,1 +1,3 @@
 title: Raj's Movie List
+csv_reader:
+  strip: true

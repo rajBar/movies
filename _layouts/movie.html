@@ -43,29 +43,30 @@
                 {% assign movies = site.data.movie-ratings | reverse %}
                 {% for i in (0..4) %}
                 {% assign location=movies[i].Location %}
-                <div class="last-5-item rating-{{ movies[i].Rating | strip }}">
+                {% assign rating_val = movies[i].Rating | strip %}
+                <div class="last-5-item rating-{{ rating_val }}">
                     <span class="name">{{ movies[i].Name }}</span>
-                    {% if movies[i].Rating == " 1" %}
+                    {% if rating_val == "1" %}
                     <span class="rating">Hated</span>
                     <span class="rating">{{ movies[i].Date }}</span>
                     {% include location-icon.html location=location %}
-                    {% elsif movies[i].Rating == " 2" %}
+                    {% elsif rating_val == "2" %}
                     <span class="rating">Disliked</span>
                     <span class="rating">{{ movies[i].Date }}</span>
                     {% include location-icon.html location=location %}
-                    {% elsif movies[i].Rating == " 3" %}
+                    {% elsif rating_val == "3" %}
                     <span class="rating">Average</span>
                     <span class="rating">{{ movies[i].Date }}</span>
                     {% include location-icon.html location=location %}
-                    {% elsif movies[i].Rating == " 4" %}
+                    {% elsif rating_val == "4" %}
                     <span class="rating">Liked</span>
                     <span class="rating">{{ movies[i].Date }}</span>
                     {% include location-icon.html location=location %}
-                    {% elsif movies[i].Rating == " 5" %}
+                    {% elsif rating_val == "5" %}
                     <span class="rating">Loved</span>
                     <span class="rating">{{ movies[i].Date }}</span>
                     {% include location-icon.html location=location %}
-                    {% elsif movies[i].Rating == " 6" %}
+                    {% elsif rating_val == "6" %}
                     <span class="rating">All Time Favourite</span>
                     <span class="rating">{{ movies[i].Date }}</span>
                     {% include location-icon.html location=location %}
@@ -98,32 +99,32 @@
 
         <div class="list">
             {% assign counter = 0 %}
-            {% assign lastRating = " 6" %}
+            {% assign lastRating = "6" %}
             {% for r in ratingsSorted %}
             {% assign ratingsTitleSorted = r.items | sort:'Name' %}
             {% for row in ratingsTitleSorted %}
             {% assign counter = counter | plus:1 %}
-            {% assign currentRating = row.Rating %}
-            {% if row.Rating == " 1" %}
+            {% assign currentRating = row.Rating | strip %}
+            {% if currentRating == "1" %}
             {% assign ratingValue = "Hated" %}
-            {% elsif row.Rating == " 2" %}
+            {% elsif currentRating == "2" %}
             {% assign ratingValue = "Disliked" %}
-            {% elsif row.Rating == " 3" %}
+            {% elsif currentRating == "3" %}
             {% assign ratingValue = "Average" %}
-            {% elsif row.Rating == " 4" %}
+            {% elsif currentRating == "4" %}
             {% assign ratingValue = "Liked" %}
-            {% elsif row.Rating == " 5" %}
+            {% elsif currentRating == "5" %}
             {% assign ratingValue = "Loved" %}
-            {% elsif row.Rating == " 6" %}
+            {% elsif currentRating == "6" %}
             {% assign ratingValue = "God tier" %}
             {% endif %}
-            {% if lastRating != row.Rating %}
+            {% if lastRating != currentRating %}
             <div class="break"></div>
-            {% assign lastRating = row.Rating %}
+            {% assign lastRating = currentRating %}
             {% assign rating_array = rating_array | push: counter %}
             {% assign counter = 0 %}
             {% endif %}
-            <div class="item rating-{{ row.Rating | strip }}">
+            <div class="item rating-{{ currentRating }}">
                 <span class="name">{{ row.Name }}</span>
                 <span class="rating">{{ ratingValue }}</span>
                 {% assign date_stripped = row.Date | strip %}
