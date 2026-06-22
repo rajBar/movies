@@ -44,7 +44,8 @@
                 {% for i in (0..4) %}
                 {% assign location=movies[i].Location %}
                 {% assign rating_val = movies[i].Rating | strip %}
-                <div class="last-5-item rating-{{ rating_val }}">
+                {% assign notes_stripped = movies[i].Notes | strip %}
+                <div class="last-5-item rating-{{ rating_val }}{% if notes_stripped != "" %} has-notes{% endif %}">
                     <span class="name">{{ movies[i].Name }}</span>
                     {% if rating_val == "1" %}
                     <span class="rating">Hated</span>
@@ -70,6 +71,26 @@
                     <span class="rating">All Time Favourite</span>
                     <span class="rating">{{ movies[i].Date }}</span>
                     {% include location-icon.html location=location %}
+                    {% endif %}
+
+                    {% if notes_stripped != "" %}
+                    <div class="info-container" onmouseenter="adjustTooltip(this)" onmouseleave="resetTooltip(this)">
+                        <span class="info-icon">
+                            <svg class="info-svg" viewBox="0 0 24 24" width="14" height="14" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                        </span>
+                        <div class="tooltip-content">
+                            <div class="tooltip-row">
+                                <span class="tooltip-label">Notes</span>
+                                <span class="tooltip-value notes-text">{{ notes_stripped }}</span>
+                            </div>
+                            <div class="tooltip-arrow"></div>
+                        </div>
+                    </div>
                     {% endif %}
                 </div>
                 {% endfor %}

@@ -54,6 +54,11 @@
     transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     /*border: 1px solid #111;*/
     min-width: 107px;
+    position: relative;
+}
+.last-5-item.has-notes {
+    padding-left: 28px;
+    padding-right: 28px;
 }
 .currently-watching-item {
     background: rgba(255, 255, 255, 0.08);
