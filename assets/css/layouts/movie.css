@@ -57,8 +57,11 @@
     position: relative;
 }
 .last-5-item.has-notes {
-    padding-left: 28px;
     padding-right: 28px;
+}
+.last-5-item .info-container {
+    top: 6px;
+    right: 6px;
 }
 .currently-watching-item {
     background: rgba(255, 255, 255, 0.08);
